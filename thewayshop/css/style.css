@@ -811,7 +811,6 @@
     
 }
 .shop-cat-box1{
-    text-align: center;
     margin-bottom: 30px;
     position: relative;
     padding: 3px;
@@ -2408,8 +2407,12 @@
  .price-box-bar a{
      padding: 10px 20px;
      font-weight: 700;
-     color: #ffffff;
-     border: none;
+     color: #000000;
+     border: 2px solid;
+}
+
+.air{
+    
 }
  .add-to-btn .add-comp {
      float: left;
