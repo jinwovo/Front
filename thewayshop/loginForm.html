@@ -33,6 +33,7 @@
                 '!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.'
               );
               document.getElementById('pw').value='';
+              document.getElementById('pw2').value='';
           }
           if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
               if(document.getElementById('pw').value==document.getElementById('pw2').value){
@@ -78,13 +79,13 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="userPW" id="pw" onchange="check_pw()"/>
+              <input type="password" placeholder="userPW" id="pw" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="userPW2"  id="pw2" onchange="check_pw()"/>&nbsp;<span id="check"></span></td>
+              <input type="password" placeholder="userPW2"  id="pw2" />&nbsp;<span id="check"></span></td>
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn" onclick="check_pw()" value="Sign up" />
           </form>
         </div>
       </div>
