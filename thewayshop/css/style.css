@@ -1914,7 +1914,7 @@
      padding: 70px 0px;
 }
  .table-main table thead{
-     background: #d33b33;
+     background: #000000;
      color: #ffffff;
 }
  .table-main .table thead th{
@@ -2017,6 +2017,14 @@
 }
  .my-account-box-main{
      padding: 70px 0px;
+}
+
+.shopping-box1 a{
+    font-size: 18px;
+    background-color: #91839c7a;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
 }
  .shopping-box a{
      font-size: 18px;
