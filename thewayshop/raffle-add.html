@@ -36,28 +36,25 @@
     <script src="package/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="package/dist/sweetalert2.min.css">
     <script>
-    function id_change(){
-        (async () => {
+function setThumbnail(event) {
+     for (var image of event.target.files) { 
+         var reader = new FileReader();
+         
+          reader.onload = function(event) { 
+              var img = document.createElement("img");
+               img.setAttribute("src", event.target.result);
+               img.style.width ="500    px";
+                document.querySelector("div#image_container").appendChild(img);
+             }; 
+             console.log(image); 
+             reader.readAsDataURL(image); } 
+            }
 
-const { value: id } = await Swal.fire({
-  title: '아이디를 입력해주세요.',
-  input: 'text',
-  inputLabel: '4글자 이상 10글자 이하',
-  inputPlaceholder: 'Enter your id',
-  inputAttributes: {
-    maxlength: 10,
-    autocapitalize: 'off',
-    autocorrect: 'off'
-  }
-})
+            let flatpickrInstance
 
-if (id) {
-  Swal.fire(`Entered id: ${id}`)
-}
 
-})()
-    }
-    </script>
+
+        </script>
 
 </head>
 
@@ -148,58 +145,121 @@ if (id) {
     <!-- End All Title Box -->
 
     <!-- Start My Account  -->
-      <div class="mypagebox">
-        <h1 style="border-bottom: 3px solid #222; margin-left:20px">회원정보</h1>
-        <div class="name_profile" >
-        <strong class="name" style="font-size : 20px; color:#000; padding:25px 60px 18px 0;"  >성명 : @@@</strong>
-        </div>
-        <div class="profile_info" >
-            <h4 class="group_title">로그인정보</h4>
-            <div class="mypage_unit"> 
-                <h5 class="login_title">닉네임</h5>
-                <p class="nickname_data">닉네임</p>
-             <button type="button" class="btn_change" onclick="id_change()"> 변경 </button>
-            </div>
-            <div class="mypage_unit"> 
-                <h5 class="login_title">이메일주소</h5>
-                <p class="email_address_data">aaaaaaaaaa@naver.com</p>
-             <button type="button" class="btn_change"> 변경 </button>
-            </div>
-            <div class="mypage_unit">
-            <h5 class="login_title">비밀번호</h5>
-            <p class="password_data" type="password"  value=""> @@@@</p>
-            <button type="button" class="btn_change"> 변경 </button>
-            </div>
-            
-        
-        <div class="profile_group" >
-            <h4 class="group_title" >개인정보</h4>
+      <div class="shop-add-box"style="    height: 600px;padding-bottom: 0px;margin-bottom: 200px;" >
+        <h1 style="border-bottom: 3px solid #222; margin-left:20px; padding-top: 40px;">래플 등록</h1>
+        <div class="container tm-mt-big tm-mb-big">
+            <div class="row">
+              <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                  <div class="row" style="padding-top: 20px;">
+                    <div class="col-12">
+                      <h2 class="tm-block-title d-inline-block"></h2>
+                    </div>
+                  </div>
+                  <div class="row tm-edit-product-row">
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="tm-product-img-dummy mx-auto">
+                            <i
+                              class="fas fa-cloud-upload-alt tm-upload-icon"
+                              onclick="document.getElementById('fileInput').click();"
+                            ></i>
+                          </div>
+                          <div class="custom-file mt-3 mb-3">
+                            <input id="fileInput" type="file" style="display:none;" />
+                            <input
+                              type="button"
+                              class="btn btn-primary btn-block mx-auto"
+                              value="UPLOAD PRODUCT IMAGE"
+                              onclick="document.getElementById('fileInput').click();"
+                            />
+                          </div>
 
-            <div class="mypage_unit"> 
-                <h5 class="login_title">아이디</h5>
-                <p class="id_data">abcdefghijk</p>
-            </div>
-            <div class="mypage_unit">
-            <h5 class="login_title">휴대전화번호</h5>
-            <p class="phone_data"  value=""> 010-1234-5678</p>
-            <button type="button" class="btn_change"> 변경 </button>
-            </div>
-            <div class="mypage_unit">
-                <h5 class="login_title">생년월일</h5>
-                <p class="birthday_data"  value="">2000-00-00</p>
+
+
                     
-            </div>
-            <div class="mypage_unit_bottom">
-                <h5 class="login_title">주소</h5>
-                <p class="address_data"  value=""> 서울특별시 강남구 역삼동 222번지 22호</p> 
-                    <button type="button" class="btn_change"> 변경 </button>
+                        
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                        <form action="" class="tm-edit-product-form">
+                            <div class="form-group mb-3">
+                              <label
+                                for="name"
+                                >Product Name
+                              </label>
+                              <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                class="form-control validate"
+                                required
+                              />
+                            </div>
+                            <div class="form-group mb-3">
+                              <label
+                                for="description"
+                                >Description</label
+                              >
+                              <textarea
+                                class="form-control validate"
+                                rows="3"
+                                required
+                              ></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                  for="price"
+                                  >Price
+                                </label>
+                                <input
+                                  id="price"
+                                  name="price"
+                                  type="text"
+                                  class="form-control validate"
+                                  required
+                                />
+                              </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label
+                                      for="expire_date"
+                                      >Expire Date
+                                    </label>
+                                    <input
+                                      id="expire_date"
+                                      name="expire_date"
+                                      type="datetime-local"
+                                      class="form-control validate"
+                                      data-large-mode="true"
+                                    />
+                                  </div>
+                                  <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label
+                                      for="stock"
+                                      >Units In Stock
+                                    </label>
+                                    <input
+                                      id="stock"
+                                      name="stock"
+                                      type="text"
+                                      class="form-control validate"
+                                      required
+                                    />
+                                  </div>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                    </div>
+                  </form>
+                  </div>
                 </div>
-        </div>
+              </div>
+            </div>
+          </div>
 
-        <button type="button" onclick="location.href='my-account.html'" class="btn btn-dark">저장하기</button>
     </div>
         
-        </div>
     <!-- End My Account -->
 
    
@@ -285,6 +345,11 @@ if (id) {
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        $(function() {
+          $("#expire_date").datepicker();
+        });
+      </script>
 </body>
 
 </html>
