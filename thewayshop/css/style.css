@@ -2733,9 +2733,10 @@ li a:hover:not(.notice_color){
     display: block;
     height:800px;
     width:800px;
+    resize: none;
 }
 
 #ucontent::placeholder{
     color:black;
-    vertical-align: top;
+    vertical-align: text-top;
 }
