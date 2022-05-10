@@ -36,28 +36,70 @@
     <script src="package/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="package/dist/sweetalert2.min.css">
     <script>
-function setThumbnail(event) {
-     for (var image of event.target.files) { 
-         var reader = new FileReader();
+// function setThumbnail(event) {
+//      for (var image of event.target.files) { 
+//          var reader = new FileReader();
          
-          reader.onload = function(event) { 
-              var img = document.createElement("img");
-               img.setAttribute("src", event.target.result);
-               img.style.width ="500    px";
-                document.querySelector("div#image_container").appendChild(img);
-             }; 
-             console.log(image); 
-             reader.readAsDataURL(image); } 
-            }
+//           reader.onload = function(event) { 
+//               var img = document.createElement("img");
+//                img.setAttribute("src", event.target.result);
+//                img.style.width ="500    px";
+//                 document.querySelector("div#image_container").appendChild(img);
+//              }; 
+//              console.log(image); 
+//              reader.readAsDataURL(image); } 
+//             }
 
-            let flatpickrInstance
+//             let flatpickrInstance
+
+
+
+function uploadImgPreview() {
+
+  // @breif 업로드 파일 읽기
+
+  let fileInfo = document.getElementById("fileInput").files[0];
+
+  let reader = new FileReader();
+
+
+
+    // @details readAsDataURL( )을 통해 파일을 읽어 들일때 onload가 실행
+
+    reader.onload = function() {
+
+      
+
+        // @details 파일의 URL을 Base64 형태로 가져온다.
+
+        document.getElementById("thumbnailImg").src = reader.result;
+
+        document.getElementById("thumbnailUrl").innerText = reader.result;
+
+    };
+
+
+  if( fileInfo ) {
+
+        // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
+
+        reader.readAsDataURL( fileInfo );
+
+    }
+
+}
 
 
 
         </script>
 
 </head>
-
+<style>
+  img {
+ max-width: 100%;
+ max-height: 100%;
+}
+</style>
 <body>
 
  
@@ -160,12 +202,14 @@ function setThumbnail(event) {
                     <div class="col-xl-6 col-lg-6 col-md-12">
                         <div class="tm-product-img-dummy mx-auto">
                             <i
-                              class="fas fa-cloud-upload-alt tm-upload-icon"
-                              onclick="document.getElementById('fileInput').click();"
-                            ></i>
+                              class="fas fa-cloud-upload-alt tm-upload-icon">
+                              <img id="thumbnailImg" src="">
+
+
+                            </i>
                           </div>
                           <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;" />
+                            <input id="fileInput" type="file" onChange="uploadImgPreview();" style="display:none;" multiple/>
                             <input
                               type="button"
                               class="btn btn-primary btn-block mx-auto"
@@ -173,10 +217,6 @@ function setThumbnail(event) {
                               onclick="document.getElementById('fileInput').click();"
                             />
                           </div>
-
-
-
-                    
                         
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
